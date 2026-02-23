@@ -12,7 +12,7 @@ import "./styles/font.css";
 
 const client = new ApolloClient({
   link: new HttpLink({
-    uri: "https://us-west-2.cdn.hygraph.com/content/cma5bvoyi016q06w8ze6zpduv/master",
+    uri: import.meta.env.VITE_GRAPHCMS_URI,
   }),
   cache: new InMemoryCache(),
 });
