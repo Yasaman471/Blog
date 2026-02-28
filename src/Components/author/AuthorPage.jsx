@@ -11,13 +11,9 @@ function AuthorPage() {
   const { loading, data, error } = useQuery(GET_AUTHOR_INFO, {
     variables: { slug: slug },
   });
-  console.log(slug);
-  console.log(error);
 
   if (loading) return <h3>Loading...</h3>;
   if (error) return <h3>Error...</h3>;
-
-  console.log("data:", data);
 
   return (
     <Container maxWidth="lg">
