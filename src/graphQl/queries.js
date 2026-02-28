@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-const GET_BLOG_INFO = gql`
+const GET_BLOGS_INFO = gql`
   query {
     posts {
       author {
@@ -19,7 +19,7 @@ const GET_BLOG_INFO = gql`
   }
 `;
 
-const GET_AUTHOR_INFO = gql`
+const GET_AUTHORS_INFO = gql`
   query {
     authors {
       id
@@ -32,4 +32,48 @@ const GET_AUTHOR_INFO = gql`
   }
 `;
 
-export { GET_BLOG_INFO, GET_AUTHOR_INFO };
+const GET_AUTHOR_INFO = gql`
+  query getauthorInfo($slug: String!) {
+    authors(where: { slug: $slug }) {
+      name
+      field
+      avatar {
+        url
+      }
+      description {
+        html
+      }
+      post {
+        id
+        slug
+        title
+        coverPhoto {
+          url
+        }
+      }
+    }
+  }
+`;
+
+const GET_POST_INFO = gql`
+  query getPostInfo($slug: String!) {
+    post(where: { slug: $slug }) {
+      author {
+        avatar {
+          url
+        }
+        name
+        field
+      }
+      content {
+        html
+      }
+      title
+      coverPhoto {
+        url
+      }
+    }
+  }
+`;
+
+export { GET_BLOGS_INFO, GET_AUTHORS_INFO, GET_AUTHOR_INFO, GET_POST_INFO };

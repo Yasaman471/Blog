@@ -1,12 +1,13 @@
 import { useQuery } from "@apollo/client/react";
-import { GET_BLOG_INFO } from "../../graphQl/queries";
+import { GET_BLOGS_INFO } from "../../graphQl/queries";
 import { Grid } from "@mui/material";
 import CardEl from "../Shared/CardEl";
+import Loader from "../Shared/Loader";
 
 function Blogs() {
-  const { loading, data, error } = useQuery(GET_BLOG_INFO);
-  console.log(data);
-  if (loading) return <p>Loading...</p>;
+  const { loading, data, error } = useQuery(GET_BLOGS_INFO);
+
+  if (loading) return <Loader />;
   if (error) return <p>Error...</p>;
   return (
     <Grid container spacing={2}>

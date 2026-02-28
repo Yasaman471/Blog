@@ -1,16 +1,16 @@
 import React from "react";
 import { useQuery } from "@apollo/client/react";
-import { GET_AUTHOR_INFO } from "../../graphQl/queries";
+import { GET_AUTHORS_INFO } from "../../graphQl/queries";
 import { Avatar, Divider, Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import Loader from "../Shared/Loader";
 
 function Authors() {
-  const { loading, data, error } = useQuery(GET_AUTHOR_INFO);
+  const { loading, data, error } = useQuery(GET_AUTHORS_INFO);
 
-  if (loading) return <h3>Loading...</h3>;
+  if (loading) return <Loader />;
   if (error) return <h3>Error...</h3>;
 
-  console.log(data);
   const { authors } = data;
 
   return (
